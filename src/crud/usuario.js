@@ -1,4 +1,4 @@
-import { prisma } from "../../prisma/db";
+import { prisma } from "../../prisma/db.js";
 
 const getAllUsuarios = async (req, res) => {
   try {
