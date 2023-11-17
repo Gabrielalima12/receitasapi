@@ -1,4 +1,4 @@
-import { prisma } from '../../prisma/database.js';
+import { prisma } from '../../prisma/db.js';
 
 const getAllCategorias = async (req, res) => {
   try {
