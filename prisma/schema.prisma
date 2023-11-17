@@ -4,28 +4,34 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url  	= env("DATABASE_URL")
+  url      = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
 model Usuario {
-  id           Int      @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   usuario      String
-  email        String   @unique
+  email        String    @unique
   senha        String
   confirmasenha String
-
   receitas     Receita[]
 }
 
 model Receita {
   id          Int      @id @default(autoincrement())
-  usuarioId   Int      
+  usuarioId   Int
   titulo      String
   imagem      String?
   conteudo    String
+  categorias  Categoria[]
 
   usuario     Usuario  @relation(fields: [usuarioId], references: [id])
 }
 
+model Categoria {
+  id          Int      @id @default(autoincrement())
+  nome        String   @unique
+  descricao   String?
+  receitas     Receita[]
+}
 
